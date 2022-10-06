@@ -51,14 +51,19 @@ export default {
 </script>
 
 <style lang="scss">
-.slide .VueCarousel-pagination {
-  position: absolute;
-  bottom: 25px;
-}
-.slide-item{
-  height: 95vh;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
+  .slide .VueCarousel-pagination {
+    position: absolute;
+    bottom: 25px;
+  }
+  .slide-item{
+    height: 95vh;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  @media (max-width: 768px) {
+    .slide-item{
+      height: 40vh;
+    }
+  }
 </style>>

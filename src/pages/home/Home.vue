@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-      <section class="main-banner">
-        <div v-if="!loading" class="banner" :style="{backgroundImage: `url(${destaques[n].imagem})`}"></div>
-      </section>
+      <BannerTopo />
       <section class="main-content mt-5">
         <div class="container-fluid">
           <ContentCategories />
@@ -13,6 +11,7 @@
 
 <script>
 import { mapState, mapActions } from 'vuex'
+import BannerTopo from '@/components/banner/BannerTopo'
 import ContentCategories from '@/components/content/ContentCategories'
 
 export default {
@@ -35,7 +34,8 @@ export default {
     ...mapActions('components', ['LoadDestaques'])
   },
   components: {
-    ContentCategories
+    ContentCategories,
+    BannerTopo
   }
 }
 </script>
@@ -47,7 +47,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
   }
-p {
-  color: white;
-}
+  p {
+    color: white;
+  }
 </style>

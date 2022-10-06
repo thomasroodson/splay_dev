@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
           <div class="col-md-8 d-flex">
             <div class="avatar-profile">
-              <img class="img-fluid" src="@/assets/images/matheus-ferrero-W7b3eDUb_2I-unsplash.jpg"/>
+              <img class="img-fluid" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
             </div>
             <div class="body-profile mt-2 px-5">
               <h5 class="h3">Lucas Cunha</h5>

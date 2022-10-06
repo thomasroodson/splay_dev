@@ -10,9 +10,11 @@
           </div>
           <span>{{descricao}}</span>
           <div class="items my-3">
-            <span class="py-2 px-4 me-2">
-              <font-awesome-icon :icon="['fa', 'play']"/>
-            </span>
+            <router-link to="teste/3150">
+              <span class="py-2 px-4 me-2">
+                <font-awesome-icon :icon="['fa', 'play']"/>
+              </span>
+            </router-link>
             <span class="py-2 px-4 ms-2">
               <font-awesome-icon :icon="['fas', 'heart']"/>
             </span>
@@ -50,7 +52,6 @@
 
 <script>
 // import Player from '@/components/player/Player'
-
 export default {
   data () {
     return {
@@ -98,8 +99,9 @@ export default {
       border: 2px solid #fff;
       cursor: pointer;
       transition: ease-in 50ms;
+      color: #fff;
       &:hover{
-        background-color: #161616;
+        background-color: #ff0000;
         border: 2px solid #ff0000;
       }
     }
