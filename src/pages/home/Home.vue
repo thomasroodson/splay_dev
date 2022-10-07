@@ -47,7 +47,7 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
   }
-p {
-  color: white;
-}
+  p {
+    color: white;
+  }
 </style>

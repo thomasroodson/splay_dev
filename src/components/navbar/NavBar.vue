@@ -1,36 +1,26 @@
 <template>
-  <nav v-if="!$route.meta.hideNavbar" class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 500}">
-    <a class="navbar-brand" href="#">
+<header>
+  <nav v-if="!$route.meta.hideNavbar" class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 400}">
+    <router-link class="navbar-brand px-2" :to="{name: 'home'}">
       <img src="@/assets/logo/logosaraplay.png">
-    </a>
-    <div class="nav-content flex-grow-1">
-      <ul class="nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Active</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Disabled</a>
-        </li>
-      </ul>
+    </router-link>
+
+    <button v-if="!toggler" class="navbar-toggler" @click="navbarToggle">
+      <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'bars']"/>
+    </button>
+
+    <button v-else class="navbar-toggler close" @click="navbarToggle">
+      <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'x']"/>
+    </button>
+
+    <div class="overlay-menu" @click="navbarToggle" v-if="toggler"></div>
+
+    <div class="menu-items d-flex flex-column pt-2" :class="{'d-none' : !toggler}">
 
     </div>
-    <div class="right-content">
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="#" class="nav-link">
-          <font-awesome-icon :icon="['fa', 'magnifying-glass']"/>
-          busca</a></li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">login</a></li>
-      </ul>
-    </div>
+
   </nav>
+</header>
 </template>
 
 <script>
@@ -38,12 +28,16 @@ export default {
   name: 'NavBar',
   data () {
     return {
-      scrollPosition: null
+      scrollPosition: null,
+      toggler: false
     }
   },
   methods: {
     updateScroll () {
       this.scrollPosition = window.scrollY
+    },
+    navbarToggle () {
+      this.toggler = !this.toggler
     }
   },
   mounted () {
@@ -53,16 +47,49 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.navbar{
-  a{
-    color: #fff;
+  .navbar{
+    .navbar-toggler-icon{
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
   }
-}
-.change_color{
-  -webkit-transition: opacity 0.5s 0s ease-in-out;
-  -moz-transition: opacity 0.5s 0s ease-in-out;
-  -o-transition: opacity 0.5s 0s ease-in-out;
-  transition: opacity 0.5s 0s ease-in-out;
-  background-color: #161616d0 !important;
-}
+  .change_color{
+    -webkit-transition: opacity 0.5s 0s ease-in-out;
+    -moz-transition: opacity 0.5s 0s ease-in-out;
+    -o-transition: opacity 0.5s 0s ease-in-out;
+    transition: opacity 0.5s 0s ease-in-out;
+    background-color: #161616d0 !important;
+  }
+  .navbar-toggler:focus{
+    box-shadow: none !important;
+  }
+  .close{
+    z-index: 9999;
+  }
+  .overlay-menu{
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 40vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+  }
+  .menu-items{
+    display: none;
+    background-color:#181818;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 60vw;
+    height: 100vh;
+    .nav-link{
+      color:#fff;
+      font-size: 1.4rem;
+      font-weight: 500;
+      padding-top:4px;
+      padding-bottom:4px;
+    }
+  }
 </style>
