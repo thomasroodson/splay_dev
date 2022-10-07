@@ -18,7 +18,6 @@
     <div class="menu-items d-flex flex-column pt-2" :class="{'d-none' : !toggler}">
 
     </div>
-
   </nav>
 </header>
 </template>
