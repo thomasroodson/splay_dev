@@ -74,17 +74,17 @@ export default {
     position: fixed;
     top: 0;
     left:0;
-    width: 40vw;
+    width: 40%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.1);
     z-index: 9999;
   }
   .menu-items{
-    background-color:#ff0000;
+    background-color:#181818;
     position: fixed;
     top: 0;
     right: 0;
-    width: 60vw;
+    width: 60%;
     height: 100vh;
     .nav-link{
       color:#fff;
