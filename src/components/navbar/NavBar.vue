@@ -5,28 +5,19 @@
       <img src="@/assets/logo/logosaraplay.png">
     </router-link>
 
-    <button class="navbar-toggler">
-      <font-awesome-icon class="navbar-toggler-icon" @click="navbarToogle" :icon="['fa', 'bars']"/>
+    <button v-if="!toggler" class="navbar-toggler" @click="navbarToggle">
+      <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'bars']"/>
     </button>
-    <div class="overlay-menu" @click="navbarToogle"></div>
 
-    <div class="menu-items">
-      <ul class="navbar-nav mr-auto text-center mt-5">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Séries</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Filmes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Podcasts</a>
-        </li>
-      </ul>
+    <button v-else class="navbar-toggler close" @click="navbarToggle">
+      <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'x']"/>
+    </button>
+
+    <div class="overlay-menu" @click="navbarToggle" v-if="toggler"></div>
+
+    <div class="menu-items d-flex flex-column pt-2" :class="{'d-none' : !toggler}">
+
     </div>
-
   </nav>
 </header>
 </template>
@@ -37,16 +28,15 @@ export default {
   data () {
     return {
       scrollPosition: null,
-      toogler: false
+      toggler: false
     }
   },
   methods: {
     updateScroll () {
       this.scrollPosition = window.scrollY
     },
-    navbarToogle () {
-      this.toogler = !this.toogler
-      console.log(this.toogler)
+    navbarToggle () {
+      this.toggler = !this.toggler
     }
   },
   mounted () {
@@ -70,16 +60,23 @@ export default {
     transition: opacity 0.5s 0s ease-in-out;
     background-color: #161616d0 !important;
   }
+  .navbar-toggler:focus{
+    box-shadow: none !important;
+  }
+  .close{
+    z-index: 9999;
+  }
   .overlay-menu{
     position: fixed;
     top: 0;
     left:0;
     width: 40%;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
   }
   .menu-items{
+    display: none;
     background-color:#181818;
     position: fixed;
     top: 0;
