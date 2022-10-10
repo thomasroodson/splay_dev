@@ -13,10 +13,8 @@
       <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'x']"/>
     </button>
 
-    <div class="overlay-menu" @click="navbarToggle" v-if="toggler"></div>
-
-    <div class="menu-items d-flex flex-column pt-2" :class="{'d-none' : !toggler}">
-      <ul class="navbar-nav mr-auto text-center mt-5">
+    <div class="menu-items d-md-flex flex-column flex-md-row flex-grow-1 justify-content-between mx-md-3" :class="{'d-none' : !toggler}">
+      <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
         <li class="nav-item">
           <a class="nav-link" href="#">Home</a>
         </li>
@@ -30,7 +28,18 @@
           <a class="nav-link" href="#">Podcasts</a>
         </li>
       </ul>
+      <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Busca</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Login</a>
+        </li>
+      </ul>
     </div>
+
+    <div class="overlay-menu" @click="navbarToggle" v-if="toggler"></div>
+
   </nav>
 </header>
 </template>
@@ -83,25 +92,31 @@ export default {
     position: fixed;
     top: 0;
     left:0;
-    width: 40vw;
+    width: 40%;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 9999;
   }
   .menu-items{
-    display: none;
-    background-color:#181818;
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 60vw;
-    height: 100vh;
     .nav-link{
       color:#fff;
       font-size: 1.4rem;
-      font-weight: 500;
-      padding-top:4px;
-      padding-bottom:4px;
+      font-weight: 300;
+      padding-left:8px;
+      padding-right: 8px;
+      &:hover{
+        color: #ff0000;
+      }
+    }
+  }
+  @media (max-width: 768px){
+    .menu-items{
+      background-color:#181818;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 60%;
+      height: 100vh;
     }
   }
 </style>
