@@ -5,18 +5,31 @@
       <img src="@/assets/logo/logosaraplay.png">
     </router-link>
 
-    <button v-if="!toggler" class="navbar-toggler" @click="navbarToggle">
+    <button v-if="!toggler" class="navbar-toggler d-md-none" @click="navbarToggle">
       <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'bars']"/>
     </button>
 
-    <button v-else class="navbar-toggler close" @click="navbarToggle">
+    <button v-else class="navbar-toggler close d-md-none" @click="navbarToggle">
       <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'x']"/>
     </button>
 
     <div class="overlay-menu" @click="navbarToggle" v-if="toggler"></div>
 
     <div class="menu-items d-flex flex-column pt-2" :class="{'d-none' : !toggler}">
-
+      <ul class="navbar-nav mr-auto text-center mt-5">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Séries</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Filmes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Podcasts</a>
+        </li>
+      </ul>
     </div>
   </nav>
 </header>
