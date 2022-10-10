@@ -30,7 +30,10 @@
       </ul>
       <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">Busca</a>
+          <a class="nav-link" href="#">
+            <font-awesome-icon @click="showPassword" :icon="['fa', 'magnifying-glass']"/>
+            Busca
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Login</a>
