@@ -1,46 +1,73 @@
 <template>
   <div class="home">
-      <!--Banner Topo-->>
-      <section class="main-content mt-5">
-        <div class="container-fluid">
-        </div>
-      </section>
+  <!--Banner Topo-->
+  <section class="container mt-5 pt-5">
+    <h3>Celebrações</h3>
+    <div class="row">
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+      <div class="col-md-3 p-2">
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zATdeXZdwnCpWuWy9RaHAQMJPKV.jpg">
+      </div>
+    </div>
+  </section>
   </div>
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
 
 export default {
-  name: 'HomePage',
+  name: 'CategoryPage',
   data () {
     return {
-      n: Math.floor(Math.random() * 5),
-      loading: false
+      data: []
     }
-  },
-  async created () {
-    this.loading = true
-    await this.LoadDestaques()
-    this.loading = false
-  },
-  computed: {
-    ...mapState('components', ['destaques'])
-  },
-  methods: {
-    ...mapActions('components', ['LoadDestaques'])
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .banner{
-    height: 95vh;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-  }
-p {
-  color: white;
-}
 </style>

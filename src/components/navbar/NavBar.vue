@@ -1,6 +1,6 @@
 <template>
-<header>
-  <nav v-if="!$route.meta.hideNavbar" class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 400}">
+<header v-if="!$route.meta.hideNavbar">
+  <nav class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 400}">
     <router-link class="navbar-brand px-2" :to="{name: 'home'}">
       <img src="@/assets/logo/logosaraplay.png">
     </router-link>
@@ -16,9 +16,6 @@
     <div class="menu-items d-md-flex flex-column flex-md-row flex-grow-1 justify-content-between mx-md-3" :class="{'d-none' : !toggler}">
       <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="#">Séries</a>
         </li>
         <li class="nav-item">
@@ -31,12 +28,12 @@
       <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
         <li class="nav-item">
           <a class="nav-link" href="#">
-            <font-awesome-icon @click="showPassword" :icon="['fa', 'magnifying-glass']"/>
+            <font-awesome-icon :icon="['fa', 'magnifying-glass']"/>
             Busca
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Login</a>
+          <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
         </li>
       </ul>
     </div>
