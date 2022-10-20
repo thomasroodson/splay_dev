@@ -1,5 +1,5 @@
 <template>
-  <footer v-if="!$route.meta.hideNavbar" class="pt-5 mb-4">
+  <footer v-if="!$route.meta.hideFooter" class="pt-5 mb-4">
     <div class="d-md-flex justify-content-between container">
       <div class="col-md-2 my-4">
         <h6 class="mb-4">FALE CONOSCO:</h6>

@@ -24,25 +24,25 @@
     </div>
     <div class="container my-5 py-5">
       <div class="row text-center">
-        <h1>Você também pode gostar</h1>
+        <h1 class="h1-related">Você também pode gostar</h1>
         <div class="col-md-3">
           <router-link to="/">
-            <img :src="imagem.cdn" class="img-fluid">
+            <img :src="imagem.cdn" class="img-fluid pb-3">
           </router-link>
         </div>
         <div class="col-md-3">
           <router-link to="/">
-            <img :src="imagem.cdn" class="img-fluid">
+            <img :src="imagem.cdn" class="img-fluid pb-3">
           </router-link>
         </div>
         <div class="col-md-3">
           <router-link to="/">
-            <img :src="imagem.cdn" class="img-fluid">
+            <img :src="imagem.cdn" class="img-fluid pb-3">
           </router-link>
         </div>
         <div class="col-md-3">
           <router-link to="/">
-            <img :src="imagem.cdn" class="img-fluid">
+            <img :src="imagem.cdn" class="img-fluid pb-3">
           </router-link>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .single-movie{
   .backdrop{
     min-height: 90vh;

@@ -8,5 +8,15 @@ export default [
     path: '/browse',
     name: 'home',
     component: () => import(/* webpackChunkName: "home" */ './Home')
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: () => import(/* webpackChunkName: "search" */ './Search'),
+    meta: {
+      hideNavbar: true,
+      hideFooter: true
+    }
   }
+
 ]

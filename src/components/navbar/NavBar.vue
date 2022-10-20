@@ -27,10 +27,10 @@
       </ul>
       <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <router-link class="nav-link" :to="{name: 'search'}">
             <font-awesome-icon :icon="['fa', 'magnifying-glass']"/>
             Busca
-          </a>
+          </router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
@@ -100,7 +100,7 @@ export default {
   .menu-items{
     .nav-link{
       color:#fff;
-      font-size: 1.4rem;
+      font-size: 1.088rem;
       font-weight: 300;
       padding-left:8px;
       padding-right: 8px;

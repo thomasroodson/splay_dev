@@ -17,7 +17,7 @@ export default {
   data () {
     return {
       settings: {
-        autoplay: true,
+        autoplay: false,
         paginationActiveColor: '#F10000',
         perPageCustom: [[576, 2], [768, 3], [992, 4], [1200, 5]]
       },
