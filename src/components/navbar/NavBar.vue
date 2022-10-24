@@ -71,7 +71,7 @@ export default {
   .navbar{
     .navbar-toggler-icon{
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.088rem;
       cursor: pointer;
     }
   }

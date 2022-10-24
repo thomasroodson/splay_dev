@@ -1,7 +1,7 @@
 <template>
   <div v-if="loading" class="row flex-column mx-3">
     <div class="col-12" v-for="categoria in categorias" :key="categoria.id">
-      <ShowContent />
+      <ShowContent :idComp="categoria.id" />
     </div>
   </div>
 </template>

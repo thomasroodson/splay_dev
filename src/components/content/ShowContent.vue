@@ -2,15 +2,15 @@
   <carousel v-if="loading" v-bind="settings">
     <slide v-for="index in 10" :key="index">
       <div class="col-12 px-2">
-        <img class="img-fluid" :src="`https://img.saraplay.com.br/${cultos[index].imagem.url}.jpg`">
+        {{idComp}}
       </div>
     </slide>
   </carousel>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
 import { Carousel, Slide } from 'vue-carousel'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'CultsComponent',
@@ -24,16 +24,14 @@ export default {
       loading: true
     }
   },
-  async created () {
-    this.loading = false
-    await this.LoadCultos()
-    this.loading = true
+  props: {
+    idComp: Number
   },
-  computed: {
-    ...mapState('components', ['cultos'])
+  mounted () {
+    this.LoadConteudoCategoria(this.idcomp)
   },
   methods: {
-    ...mapActions('components', ['LoadCultos'])
+    ...mapActions('components', ['LoadConteudoCategoria'])
   },
   components: {
     Carousel,
