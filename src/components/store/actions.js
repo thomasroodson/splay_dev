@@ -47,11 +47,10 @@ export const SetLoadCategorias = ({ commit }, payload) => {
 export const LoadConteudoCategoria = ({ dispatch }, payload) => {
   return services.components.conteudoCategoria({ id: payload })
     .then(res => {
-      dispatch('SetConteudoCategoria', res.data.data, { id: payload })
+      dispatch('SetConteudoCategoria', { content: res.data.data, id: payload })
     })
 }
 
-export const SetConteudoCategoria = ({ commit }, payload, id) => {
-  console.log(id)
+export const SetConteudoCategoria = ({ commit }, payload) => {
   commit('SetConteudoCategoria', payload)
 }

@@ -10,7 +10,7 @@
 
 <script>
 import { Carousel, Slide } from 'vue-carousel'
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   name: 'CultsComponent',
@@ -32,6 +32,9 @@ export default {
   },
   methods: {
     ...mapActions('components', ['LoadConteudoCategoria'])
+  },
+  computed: {
+    ...mapState('components', ['categorias'])
   },
   components: {
     Carousel,
