@@ -18,7 +18,7 @@
         </div>
       </div>
 
-      <div v-show="false" class="row my-4 justify-content-center">
+      <div v-show="true" class="row my-4 justify-content-center">
         <div class="col-6 col-md-3 my-2" v-for="result in 20" :key="result.index">
           <a href="/#">
             <img src="https://www.themoviedb.org/t/p/original/kJdacG3ZPc76FWWmzgGy4meYkY0.jpg" class="img-fluid">

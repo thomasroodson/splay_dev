@@ -1,6 +1,7 @@
 <template>
-  <div v-if="loading" class="row flex-column mx-3">
+  <div v-if="loading" class="row flex-column my-3">
     <div class="col-12" v-for="categoria in categorias" :key="categoria.id">
+      <h4>{{categoria.descricao}}</h4>
       <ShowContent :idComp="categoria.id" />
     </div>
   </div>
@@ -33,6 +34,10 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+  .col-12{
+    h2{
+      font-size: 1.5rem;
+    }
+  }
 </style>

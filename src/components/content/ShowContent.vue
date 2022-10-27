@@ -2,7 +2,7 @@
   <carousel v-if="loading" v-bind="settings">
     <slide v-for="index in 10" :key="index">
       <div class="col-12 px-2">
-        {{idComp}}
+        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zEkgjxI57Or8YtdqM32WsUBmf5w.jpg">
       </div>
     </slide>
   </carousel>
@@ -28,7 +28,7 @@ export default {
     idComp: Number
   },
   mounted () {
-    this.LoadConteudoCategoria(this.idcomp)
+    this.LoadConteudoCategoria(this.idComp)
   },
   methods: {
     ...mapActions('components', ['LoadConteudoCategoria'])

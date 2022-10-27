@@ -1,15 +1,10 @@
 <template>
-  <section class="genesis-tv">
-    <div class="container-fluid no-gutters">
-      <div class="row">
-        <div class="col-12">
-          <div class="video-container">
-            <iframe src="https://www.youtube.com/embed/ibevatNsdpg"></iframe>
-          </div>
-        </div>
+  <section id="genesis-tv">
+    <div class="container-fluid mt-5">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/ibevatNsdpg"></iframe>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -20,5 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+  #genesis-tv{
+    height: calc(100vh - 300px);
+  }
 </style>

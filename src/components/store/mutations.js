@@ -12,8 +12,7 @@ export default {
     state.categorias = payload
   },
   SetConteudoCategoria (state, payload) {
-    console.log(payload)
-    state.categorias[payload[0]].conteudo = payload
+
   }
 
 }
