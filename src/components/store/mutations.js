@@ -11,9 +11,12 @@ export default {
   SetLoadCategorias (state, payload) {
     state.categorias = payload
   },
-  SetConteudoCategoria (state, payload) {
-    console.log(payload)
-    state.categorias[payload[0]].conteudo = payload
+  async SetConteudoCategoria (state, payload) {
+    await state.categorias.forEach((element, i) => {
+      if (payload.id === element.id) {
+        state.categorias[i].conteudo = payload.content
+      }
+    })
   }
 
 }

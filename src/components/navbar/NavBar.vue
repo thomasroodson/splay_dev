@@ -1,6 +1,6 @@
 <template>
-<header>
-  <nav v-if="!$route.meta.hideNavbar" class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 400}">
+<header v-if="!$route.meta.hideNavbar">
+  <nav class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 400}">
     <router-link class="navbar-brand px-2" :to="{name: 'home'}">
       <img src="@/assets/logo/logosaraplay.png">
     </router-link>
@@ -27,10 +27,10 @@
       </ul>
       <ul class="navbar-nav text-center flex-md-row mt-5 mt-md-2">
         <li class="nav-item">
-          <a class="nav-link" href="#">
+          <router-link class="nav-link" :to="{name: 'search'}">
             <font-awesome-icon :icon="['fa', 'magnifying-glass']"/>
             Busca
-          </a>
+          </router-link>
         </li>
         <li class="nav-item">
           <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
@@ -71,7 +71,7 @@ export default {
   .navbar{
     .navbar-toggler-icon{
       color: #fff;
-      font-size: 1.2rem;
+      font-size: 1.088rem;
       cursor: pointer;
     }
   }
@@ -100,7 +100,7 @@ export default {
   .menu-items{
     .nav-link{
       color:#fff;
-      font-size: 1.4rem;
+      font-size: 1.088rem;
       font-weight: 300;
       padding-left:8px;
       padding-right: 8px;

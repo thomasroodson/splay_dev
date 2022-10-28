@@ -9,7 +9,8 @@ export default [
     name: 'player-movie',
     component: () => import(/* webpackChunkName: "playermovie" */ './PlayerMovie'),
     meta: {
-      hideNavbar: true
+      hideNavbar: true,
+      hideFooter: true
     }
   }
 ]
