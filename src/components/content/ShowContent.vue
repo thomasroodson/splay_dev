@@ -1,9 +1,9 @@
 <template>
   <carousel v-if="loading" v-bind="settings">
-    <slide v-for="index in 10" :key="index">
-      <div class="col-12 px-2">
-        <img class="img-fluid" src="https://www.themoviedb.org/t/p/original/zEkgjxI57Or8YtdqM32WsUBmf5w.jpg">
-      </div>
+    <slide v-for="({ imagem, url }, index ) in categorias[iCateg].conteudo" :key="index">
+      <a :href="`/watch/${url}`">
+        <img class="img-fluid px-1" :src="imagem.cdn">
+      </a>
     </slide>
   </carousel>
 </template>
@@ -19,16 +19,19 @@ export default {
       settings: {
         autoplay: false,
         paginationActiveColor: '#F10000',
-        perPageCustom: [[576, 2], [768, 3], [992, 4], [1200, 5]]
+        perPageCustom: [[576, 2], [768, 3], [992, 5], [1200, 6]]
       },
       loading: true
     }
   },
   props: {
-    idComp: Number
+    idComp: Number,
+    iCateg: Number
   },
-  mounted () {
-    this.LoadConteudoCategoria(this.idComp)
+  async created () {
+    this.loading = false
+    await this.LoadConteudoCategoria(this.idComp)
+    this.loading = true
   },
   methods: {
     ...mapActions('components', ['LoadConteudoCategoria'])
@@ -43,20 +46,18 @@ export default {
 }
 </script>
 
-<style lang="scss">
-// - Cultos
-.cultos{
-  .play-culto{
-    img{
-      width: 250px;
-      height: 160px;
-      overflow: hidden;
-      object-fit: cover;
-      object-position: center center;
-    }
+<style lang="scss" scoped>
+  img{
+    width: 280px;
+    height: 160px;
+    overflow: hidden;
+    object-fit: cover;
+    object-position: center center;
+  }
+  .VueCarousel-wrapper{
+    overflow: visible;
   }
   .VueCarousel-dot-container{
     margin-top:0 !important;
   }
-}
 </style>

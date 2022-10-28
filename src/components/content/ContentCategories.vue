@@ -1,8 +1,8 @@
 <template>
   <div v-if="loading" class="row flex-column my-3">
-    <div class="col-12" v-for="categoria in categorias" :key="categoria.id">
-      <h4>{{categoria.descricao}}</h4>
-      <ShowContent :idComp="categoria.id" />
+    <div class="col-12" v-for="( categoria, index ) in categorias" :key="categoria.id">
+      <h4 class="mt-5">{{categoria.descricao}}</h4>
+      <ShowContent :idComp="categoria.id" :iCateg="index" />
     </div>
   </div>
 </template>
