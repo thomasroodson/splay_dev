@@ -1,8 +1,8 @@
 <template>
   <carousel v-if="loading" v-bind="settings">
-    <slide v-for="({ imagem, url, id }, index ) in categorias[iCateg].conteudo" :key="index">
-      <a :href="`/watch/${url}`" @click="this.LoadSingleMovie(id)">
-        <img class="img-fluid px-1" :src="imagem.cdn">
+    <slide v-for="({ imagem, id, url}, index ) in categorias[iCateg].conteudo" :key="index">
+      <a :href="`/watch/${id}/${url}`">
+        <img class="img-fluid px-1" :src="`https://img.saraplay.com.br/280x180/${imagem.url}.jpg`">
       </a>
     </slide>
   </carousel>
@@ -19,7 +19,7 @@ export default {
       settings: {
         autoplay: false,
         paginationActiveColor: '#F10000',
-        perPageCustom: [[576, 2], [768, 3], [992, 4], [1024, 5], [1400, 6]]
+        perPageCustom: [[576, 2], [768, 3], [992, 4], [1200, 5]]
       },
       loading: true
     }

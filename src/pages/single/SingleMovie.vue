@@ -1,6 +1,6 @@
 <template>
   <section class="single-movie">
-    <div v-if="loading">
+ <div v-if="loading">
       <Loading />
     </div>
     <div v-if="!loading" class="container-fluid">
@@ -58,15 +58,16 @@ import { mapActions, mapState } from 'vuex'
 import Loading from '@/components/loading/Loading'
 
 export default {
+  props: ['id'],
   data () {
     return {
-      loading: true
+      loading: false
     }
   },
-  // async created () {
-  //   await this.LoadSingleMovie(1542)
-  //   this.loading = false
-  // },
+  async created () {
+    await this.LoadSingleMovie(this.id)
+    this.loading = false
+  },
   methods: {
     ...mapActions('single', ['LoadSingleMovie'])
   },
