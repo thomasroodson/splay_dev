@@ -1,7 +1,7 @@
 <template>
   <carousel v-if="loading" v-bind="settings">
-    <slide v-for="({ imagem, url }, index ) in categorias[iCateg].conteudo" :key="index">
-      <a :href="`/watch/${url}`">
+    <slide v-for="({ imagem, url, id }, index ) in categorias[iCateg].conteudo" :key="index">
+      <a :href="`/watch/${url}`" @click="this.LoadSingleMovie(id)">
         <img class="img-fluid px-1" :src="imagem.cdn">
       </a>
     </slide>
@@ -19,7 +19,7 @@ export default {
       settings: {
         autoplay: false,
         paginationActiveColor: '#F10000',
-        perPageCustom: [[576, 2], [768, 3], [992, 5], [1200, 6]]
+        perPageCustom: [[576, 2], [768, 3], [992, 4], [1024, 5], [1400, 6]]
       },
       loading: true
     }
@@ -34,7 +34,8 @@ export default {
     this.loading = true
   },
   methods: {
-    ...mapActions('components', ['LoadConteudoCategoria'])
+    ...mapActions('components', ['LoadConteudoCategoria']),
+    ...mapActions('single', ['LoadSingleMovie'])
   },
   computed: {
     ...mapState('components', ['categorias'])
@@ -49,7 +50,7 @@ export default {
 <style lang="scss" scoped>
   img{
     width: 280px;
-    height: 160px;
+    max-height: 180px;
     overflow: hidden;
     object-fit: cover;
     object-position: center center;
