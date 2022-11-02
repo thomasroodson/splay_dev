@@ -13,7 +13,7 @@
           </div>
           <span>{{movie.descricao}}</span>
           <div class="items my-3">
-            <router-link to="teste/3150">
+            <router-link :to="{name: 'player-movie'}">
               <span class="py-2 px-4 me-2">
                 <font-awesome-icon :icon="['fa', 'play']"/>
               </span>
@@ -58,7 +58,9 @@ import { mapActions, mapState } from 'vuex'
 import Loading from '@/components/loading/Loading'
 
 export default {
-  props: ['id'],
+  props: {
+    id: Number
+  },
   data () {
     return {
       loading: false

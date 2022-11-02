@@ -14,7 +14,7 @@ export default {
   data () {
     return {
       mouseActive: false,
-      timeout: 6000
+      timeout: 10000
     }
   },
   methods: {
