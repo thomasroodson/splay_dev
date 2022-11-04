@@ -10,3 +10,18 @@ body, html{
   color:#fff;
   overflow-x: hidden;
 }
+.VueCarousel-wrapper {
+  overflow: visible !important;  
+}
+.VueCarousel-dot-container {
+  margin-top: 0 !important;
+  button {
+    width: 7px !important;
+    height: 7px !important;
+    padding: 5px !important;
+    border-radius: 5px !important;
+    &:focus {
+      outline: 0 !important;
+    }
+  }
+}

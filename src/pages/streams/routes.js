@@ -4,4 +4,9 @@ export default [
     name: 'genesistv',
     component: () => import(/* webpackChunkName: "genesistv" */ './GenesisTV')
   }
+  // {
+  //   path: '/radios',
+  //   name: 'genesistv',
+  //   component: () => import(/* webpackChunkName: "genesistv" */ './GenesisTV')
+  // }
 ]

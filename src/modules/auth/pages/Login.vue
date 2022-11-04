@@ -96,6 +96,7 @@ export default {
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
+  font-size: 1.088rem;
   .row{
     height: 100vh;
   }
@@ -108,7 +109,6 @@ export default {
     background-color:#000000;
     color: #fff;
     border-radius:8px;
-    font-size: 20px;
   }
   .form-control:focus{
     border-color:#FF0000;
@@ -118,13 +118,13 @@ export default {
     cursor: pointer;
     position:absolute;
     right: 29px;
-    top:130px;
+    top:120px;
   }
   .fa-eye-slash{
     cursor: pointer;
     position:absolute;
     right: 29px;
-    top:130px;
+    top: 120px;
   }
   .alert-danger{
     background-color: transparent !important;
@@ -141,7 +141,7 @@ export default {
   .btn{
     background-color:#FF0000 !important;
     border-color: #FF0000;
-    font-size: 20px;
+    font-size: 1.088rem;
     border-radius: 12px;
   }
   .btn:hover{

@@ -1,6 +1,6 @@
 <template>
   <section class="main-banner">
-    <div v-if="!loading" class="banner" :style="{backgroundImage: `url(${destaques[n].imagem})`}"></div>
+    <div v-if="!loading" class="banner" :style="{background: `linear-gradient(0deg, rgba(22,22,22,1) 10%, rgba(22,22,22,0.98) 18%, rgba(22,22,22,0.95) 22%, rgba(22,22,22,0.8) 32%, rgba(22,22,22,0.75) 36%, rgba(22,22,22,0.7) 43%, rgba(22,22,22,0.5) 58%, rgba(22,22,22,0) 100%), url(${destaques[n].imagem}) center center no-repeat`}"></div>
   </section>
 </template>
 
@@ -31,10 +31,8 @@ export default {
 
 <style lang="scss" scoped>
   .banner{
-    height: 95vh;
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    height: 90vh;
+    background-size: cover !important;
   }
   @media (max-width: 768px) {
     .banner{

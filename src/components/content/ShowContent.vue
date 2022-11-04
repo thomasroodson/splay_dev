@@ -1,8 +1,8 @@
 <template>
-  <carousel v-if="loading" v-bind="settings">
-    <slide v-for="({ imagem, id, url}, index ) in categorias[iCateg].conteudo" :key="index">
+  <carousel class="mt-3" v-if="loading" v-bind="settings">
+    <slide v-for="({ imagem, id, url}, index ) in categorias[iCateg].conteudo" :key="index" >
       <a :href="`/watch/${id}/${url}`">
-        <img class="img-fluid px-1" :src="`https://img.saraplay.com.br/280x180/${imagem.url}.jpg`">
+        <img class="img-fluid px-1" :src="`https://img.saraplay.com.br/380x222/${imagem.url}.jpg`">
       </a>
     </slide>
   </carousel>
@@ -19,7 +19,7 @@ export default {
       settings: {
         autoplay: false,
         paginationActiveColor: '#F10000',
-        perPageCustom: [[576, 2], [768, 3], [992, 4], [1200, 5]]
+        perPageCustom: [[576, 2], [768, 3], [992, 4], [1200, 5], [1440, 6], [1680, 7]]
       },
       loading: true
     }
@@ -48,17 +48,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  img{
-    width: 280px;
-    max-height: 180px;
+  img {
     overflow: hidden;
     object-fit: cover;
     object-position: center center;
-  }
-  .VueCarousel-wrapper{
-    overflow: visible;
-  }
-  .VueCarousel-dot-container{
-    margin-top:0 !important;
+    -webkit-transition: transform 100ms ease-in;
+    -moz-transition: transform 100ms ease-in;
+    -o-transition: transform 100ms ease-in;
+    transition: transform 100ms ease-in;
+    &:hover {
+      z-index: 999;
+      transform: scale(1.2);
+    }
   }
 </style>

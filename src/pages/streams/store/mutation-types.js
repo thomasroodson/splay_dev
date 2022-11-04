@@ -1,0 +1,1 @@
+export const SET_STREAMTV = 'SINGLE/SET_STREAMTV'

@@ -17,6 +17,8 @@ export const ActionDoLogin = ({ dispatch }, payload) => {
 } // Ação de Login
 
 export const ActionSetUser = ({ commit }, payload) => {
+  const { nome } = payload
+  storage.setLocalUser(nome)
   commit(types.SET_USER, payload)
 }
 
@@ -24,4 +26,11 @@ export const ActionSetToken = ({ commit }, payload) => {
   storage.setLocalToken(payload)
   storage.setHeaderToken(payload)
   commit(types.SET_TOKEN, payload)
+}
+
+export const ActionSignOut = ({ dispatch }) => {
+  storage.setHeaderToken('')
+  storage.deleteLocalToken()
+  dispatch('ActionSetUser', {})
+  dispatch('ActionSetToken', '')
 }
