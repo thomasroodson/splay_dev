@@ -75,6 +75,9 @@ export default {
 <style lang="scss" scoped>
     .register{
       height: 100vh;
+      h1{
+        font-size: 2.088rem;
+      }
     }
     .card{
       min-width: 350px;
@@ -87,7 +90,7 @@ export default {
       font-weight: 300;
       background-color: #111 !important;
       border-radius: 10px;
-      font-size: 18px;
+      font-size: 1.063rem;
       color:#fff;
     }
     .form-control:focus{
@@ -102,7 +105,7 @@ export default {
     .btn-danger{
       background-color:#FF0000 !important;
       border-color: #FF0000;
-      font-size: 20px;
+      font-size: 1.088rem;
       border-radius: 12px;
     }
     .btn:hover{
@@ -110,7 +113,7 @@ export default {
     }
     .form-check{
       text-align: left;
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
 </style>

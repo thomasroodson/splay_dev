@@ -1,10 +1,19 @@
-// import store from "@/store"
+import store from '@/store'
 
 export default async (to, from, next) => {
-  const namePage = to.name
-  document.title = ` ${namePage[0].toUpperCase()}${namePage.substring(1)} - SaraPlay `
-  // if (to.name !== 'login' && !store.getters['auth/hasToken']) {
+  if (to.name !== 'login' && !store.getters['auth/hasToken']) {
+    try {
+      await store.dispatch('auth/ActionCheckToken')
 
-  // }
-  next()
+      next({ path: to.path })
+    } catch (err) {
+      next({ name: 'login' })
+    }
+  } else {
+    if (to.name === 'login' && store.getters['auth/hasToken']) {
+      next({ name: 'home' })
+    } else {
+      next()
+    }
+  }
 }

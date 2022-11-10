@@ -1,13 +1,7 @@
 <template>
   <div v-if="loading" class="row flex-column mb-3">
     <div class="col-12" v-for="( categoria, index ) in categorias" :key="categoria.id">
-      <div v-if="categoria.id === 32 || categoria.id === 33" class="content">
-        <h4 class="mt-3">{{categoria.descricao}}</h4>
-        <ShowContent :idComp="categoria.id" :iCateg="index" />
-      </div>
-    </div>
-    <div class="col-12" v-for="( categoria, index ) in categorias" :key="categoria.id">
-      <div v-if="categoria.id !== 32 && categoria.id !== 33" class="content">
+      <div class="content">
         <h4 class="mt-3">{{categoria.descricao}}</h4>
         <ShowContent :idComp="categoria.id" :iCateg="index" />
       </div>

@@ -25,3 +25,29 @@ body, html{
     }
   }
 }
+
+// Alertas Usuários
+
+.alert p {
+  font-weight: 300;
+  margin-bottom: 3px;
+  font-size: 0.75rem;
+}
+
+.alert-success {
+  background-color: transparent !important;
+  border-color: #00ff4c;
+  color: #6ff597;
+  text-align: center;
+  padding: 3px;
+  border-radius: 0;
+}
+
+.alert-danger {
+  background-color: transparent !important;
+  border-color: #FF0000;
+  color: #f56f6f;
+  text-align: center;
+  padding: 3px;
+  border-radius: 0;
+}

@@ -1,6 +1,6 @@
 <template>
   <section class="single-movie">
- <div v-if="loading">
+    <div v-if="loading">
       <Loading />
     </div>
     <div v-if="!loading" class="container-fluid">
@@ -25,7 +25,7 @@
         </div>
       </div>
     </div>
-    <div class="container my-5 py-5">
+    <div v-if="!loading" class="container my-5 py-5">
       <div class="row text-center">
         <h1 class="h1-related">Você também pode gostar</h1>
         <div class="col-md-3">
@@ -59,11 +59,11 @@ import Loading from '@/components/loading/Loading'
 
 export default {
   props: {
-    id: Number
+    id: String
   },
   data () {
     return {
-      loading: false
+      loading: true
     }
   },
   async created () {

@@ -14,11 +14,36 @@ export const ActionDoLogin = ({ dispatch }, payload) => {
     dispatch('ActionSetUser', res.data.user)
     dispatch('ActionSetToken', res.data.access_token)
   })
-} // Ação de Login
+}
+
+export const ActionCheckToken = ({ dispatch, state }) => {
+  if (state.token) {
+    return Promise.resolve(state.token)
+  }
+
+  const token = storage.getLocalToken()
+
+  if (!token) {
+    Promise.reject(new Error('Token Inválido'))
+  }
+
+  dispatch('ActionSetToken', token)
+  return dispatch('ActionLoadSession')
+}
+
+export const ActionLoadSession = ({ dispatch }) => {
+  return new Promise((resolve, reject) => {
+    services.auth.profile().then(res => {
+      dispatch('ActionSetUser', res.data)
+      resolve()
+    }).catch((err) => {
+      dispatch('ActionSignOut')
+      reject(err)
+    })
+  })
+}
 
 export const ActionSetUser = ({ commit }, payload) => {
-  const { nome } = payload
-  storage.setLocalUser(nome)
   commit(types.SET_USER, payload)
 }
 

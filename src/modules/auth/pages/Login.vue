@@ -40,10 +40,14 @@
               </form>
               <hr/>
               <div class="footer-form d-flex justify-content-center text-center">
-                <div class="col">
-                  <span class="mr-2" >Esqueci minha senha</span>
-                  <router-link :to="{ name: 'register' }">Cadastrar</router-link>
-                </div>
+                <ul class="nav">
+                  <li class="nav-item">
+                    <router-link  class="nav-link" :to="{ name: 'reset-pass' }">Esqueci minha senha</router-link>
+                  </li>
+                  <li class="nav-item">
+                    <router-link  class="nav-link" :to="{ name: 'register' }">Registrar</router-link>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
@@ -125,18 +129,6 @@ export default {
     position:absolute;
     right: 29px;
     top: 120px;
-  }
-  .alert-danger{
-    background-color: transparent !important;
-    border-color: #FF0000;
-    font-size: 12px;
-    text-align: center;
-    padding: 3px;
-    border-radius: 0;
-  }
-  .alert-danger p {
-    font-weight: 200;
-    margin-bottom: 3px;
   }
   .btn{
     background-color:#FF0000 !important;
