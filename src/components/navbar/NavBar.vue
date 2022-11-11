@@ -32,9 +32,20 @@
             Busca
           </router-link>
         </li>
-        <li class="nav-item">
+        <li v-if="!hasToken" class="nav-item">
           <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
         </li>
+        <li v-else class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Ação</a>
+          <a class="dropdown-item" href="#">Outra ação</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Algo mais aqui</a>
+        </div>
+      </li>
       </ul>
     </div>
 
@@ -45,6 +56,7 @@
 </template>
 
 <script>
+import { mapState, mapGetters } from 'vuex'
 export default {
   name: 'NavBar',
   data () {
@@ -63,6 +75,10 @@ export default {
   },
   mounted () {
     window.addEventListener('scroll', this.updateScroll)
+  },
+  computed: {
+    ...mapState('auth', ['user']),
+    ...mapGetters('auth', ['hasToken'])
   }
 }
 </script>

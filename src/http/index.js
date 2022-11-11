@@ -18,4 +18,4 @@ const setBearerToken = token => {
 }
 
 export default services
-export { http, setBearerToken  }
+export { http, setBearerToken }
