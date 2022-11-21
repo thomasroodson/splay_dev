@@ -26,29 +26,7 @@
       </div>
     </div>
     <div v-if="!loading" class="container my-5 py-5">
-      <div class="row text-center">
-        <h1 class="h1-related">Você também pode gostar</h1>
-        <div class="col-md-3">
-          <router-link to="/">
-            <img :src="movie.imagem.cdn" class="img-fluid pb-3">
-          </router-link>
-        </div>
-        <div class="col-md-3">
-          <router-link to="/">
-            <img :src="movie.imagem.cdn" class="img-fluid pb-3">
-          </router-link>
-        </div>
-        <div class="col-md-3">
-          <router-link to="/">
-            <img :src="movie.imagem.cdn" class="img-fluid pb-3">
-          </router-link>
-        </div>
-        <div class="col-md-3">
-          <router-link to="/">
-            <img :src="movie.imagem.cdn" class="img-fluid pb-3">
-          </router-link>
-        </div>
-      </div>
+      <Related />
     </div>
   </section>
 </template>
@@ -56,6 +34,7 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import Loading from '@/components/loading/Loading'
+import Related from './components/related/Related'
 
 export default {
   props: {
@@ -77,7 +56,8 @@ export default {
     ...mapState('single', ['movie'])
   },
   components: {
-    Loading
+    Loading,
+    Related
   }
 }
 </script>

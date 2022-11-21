@@ -36,11 +36,10 @@
         </li>
         <li v-else class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" @click="toggleDropdown">
-          {{ user.nome }}
+          {{ getFirstName[0] }}
         </a>
-        <div class="dropdown-menu position-absolute" :class="{'d-block' : dropdown}">
-          <a class="dropdown-item" href="#">Ação</a>
-          <a class="dropdown-item" href="#">Outra ação</a>
+        <div class="dropdown-menu position-absolute" @click="toggleDropdown" :class="{'d-block' : dropdown}">
+          <router-link class="dropdown-item" :to="`/${user.id}/profile`">Minha Conta</router-link>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" @click="this.ActionSignOut()">Sair</a>
         </div>
@@ -82,7 +81,8 @@ export default {
   },
   computed: {
     ...mapState('auth', ['user']),
-    ...mapGetters('auth', ['hasToken'])
+    ...mapGetters('auth', ['hasToken']),
+    ...mapGetters('auth', ['getFirstName'])
   }
 }
 </script>

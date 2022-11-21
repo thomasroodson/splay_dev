@@ -11,8 +11,13 @@ export default [
   },
   {
     name: 'profile',
-    path: '/profile/:userid',
+    path: '/:userid/profile',
     component: () => import(/* webpackChunkName: "profile" */ './pages/Profile')
+  },
+  {
+    name: 'profile-edit',
+    path: '/:userid/profile/edit',
+    component: () => import(/* webpackChunkName: "profile" */ './pages/ProfileEdit')
   },
   {
     name: 'reset-pass',

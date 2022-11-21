@@ -10,3 +10,15 @@ export const LoadSingleMovie = ({ dispatch }, payload) => {
 export const ActionSetSingleMovie = ({ commit }, payload) => {
   commit(types.SET_SINGLEMOVIE, payload)
 }
+
+export const LoadRelatedContent = ({ dispatch }, payload) => {
+  return services.single.relatedContent({ id: payload })
+    .then(res => {
+      console.log(res)
+      dispatch('SetRelatedContent', res.data.data)
+    })
+}
+
+export const SetRelatedContent = ({ commit }, payload) => {
+  commit(types.SET_RELATEDCONTENT, payload)
+}
