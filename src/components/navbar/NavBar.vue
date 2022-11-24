@@ -135,6 +135,7 @@ export default {
   .dropdown-menu{
     background: #202020;
     border: 0;
+    right: -15px;
     border-radius: 0;
     transition: all 100ms;
     .dropdown-item{
