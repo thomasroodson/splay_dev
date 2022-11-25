@@ -1,9 +1,9 @@
 <template>
   <section id="single-movie" @mousemove="someMovie">
     <Player />
-    <button :class="{ active : mouseActive }" class="fixed" @click="$router.back()">
+    <!-- <button :class="{ active : mouseActive }" class="fixed" :to="{ name: 'single-movie' }">
       <font-awesome-icon :icon="['fa', 'arrow-left']"/>
-    </button>
+    </button> -->
   </section>
 </template>
 

@@ -6,6 +6,7 @@
         <ShowContent :idComp="categoria.id" :iCateg="index" />
       </div>
     </div>
+
   </div>
 </template>
 

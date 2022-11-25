@@ -1,10 +1,9 @@
 <template>
 <header v-if="!$route.meta.hideNavbar">
   <nav class="navbar fixed-top bg-transparent px-2" :class="{change_color: scrollPosition > 400}">
-    <router-link class="navbar-brand px-2" :to="{name: 'home'}">
+    <router-link class="navbar-brand px-2" :to=" { name: ( hasToken ? 'home' : 'landingpage' ) } ">
       <img src="@/assets/logo/logosaraplay.png">
     </router-link>
-
     <button v-if="!toggler" class="navbar-toggler d-md-none" @click="navbarToggle">
       <font-awesome-icon class="navbar-toggler-icon" :icon="['fa', 'bars']"/>
     </button>
@@ -36,14 +35,13 @@
           <router-link class="nav-link" :to="{name: 'login'}">Login</router-link>
         </li>
         <li v-else class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown">
-          Dropdown
+        <a class="nav-link dropdown-toggle" @click="toggleDropdown">
+          {{ getFirstName[0] }}
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Ação</a>
-          <a class="dropdown-item" href="#">Outra ação</a>
+        <div class="dropdown-menu position-absolute" @click="toggleDropdown" :class="{'d-block' : dropdown}">
+          <router-link class="dropdown-item" :to="`/${user.id}/profile`">Minha Conta</router-link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Algo mais aqui</a>
+          <a class="dropdown-item" @click="this.ActionSignOut()">Sair</a>
         </div>
       </li>
       </ul>
@@ -56,13 +54,14 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex'
+import { mapState, mapGetters, mapActions } from 'vuex'
 export default {
   name: 'NavBar',
   data () {
     return {
       scrollPosition: null,
-      toggler: false
+      toggler: false,
+      dropdown: false
     }
   },
   methods: {
@@ -71,14 +70,19 @@ export default {
     },
     navbarToggle () {
       this.toggler = !this.toggler
-    }
+    },
+    toggleDropdown () {
+      this.dropdown = !this.dropdown
+    },
+    ...mapActions('auth', ['ActionSignOut'])
   },
   mounted () {
     window.addEventListener('scroll', this.updateScroll)
   },
   computed: {
     ...mapState('auth', ['user']),
-    ...mapGetters('auth', ['hasToken'])
+    ...mapGetters('auth', ['hasToken']),
+    ...mapGetters('auth', ['getFirstName'])
   }
 }
 </script>
@@ -122,6 +126,23 @@ export default {
       padding-right: 8px;
       &:hover{
         color: #ff0000;
+      }
+    }
+  }
+  .dropdown-toggle{
+    cursor: pointer;
+  }
+  .dropdown-menu{
+    background: #202020;
+    border: 0;
+    right: -15px;
+    border-radius: 0;
+    transition: all 100ms;
+    .dropdown-item{
+      color: #fff;
+      &:hover, &:focus{
+        background: transparent;
+        color:#ff0000;
       }
     }
   }
