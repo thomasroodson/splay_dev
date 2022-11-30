@@ -36,7 +36,7 @@
         </li>
         <li v-else class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" @click="toggleDropdown">
-          {{ getFirstName[0] }}
+          {{ (user ? user.nome.split(' ')[0] : 'Usuário') }}
         </a>
         <div class="dropdown-menu position-absolute" @click="toggleDropdown" :class="{'d-block' : dropdown}">
           <router-link class="dropdown-item" :to="`/${user.id}/profile`">Minha Conta</router-link>
