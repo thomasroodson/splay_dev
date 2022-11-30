@@ -1,35 +1,41 @@
 <template>
-      <vue-plyr>
-      <div class="plyr__video-embed">
-        <iframe :src="`https://www.youtube.com/embed/QR1ludgWu9o?amp;iv_load_policy=3&amp;modestbranding=0&amp;playsinline=0&amp;showinfo=0&amp;rel=0&amp;enablejsapi=0`" allowfullscreen allowtransparency allow="autoplay"></iframe>
-      </div>
-    </vue-plyr>
+  <vue-plyr ref="plyr" :options="playerOptions">
+    <video :poster="post.media.cover" :id="'video-' + post.id" data-plyr-config="{'autoplay': false}">
+    </video>
+  </vue-plyr>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import VuePlyr from 'vue-plyr'
+import Hls from 'hls.js'
 
 export default {
-  name: 'PlayerComponent',
+  name: 'ComponentName',
+  components: {
+    VuePlyr
+  },
   data () {
     return {
-      idMovie: this.$route.params.id
+      playerOptions: {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'settings', 'fullscreen'],
+        settings: ['quality', 'speed', 'loop']
+      }
     }
   },
-  async created () {
-    await this.LoadSingleMovie(this.idMovie)
-  },
-  methods: {
-    ...mapActions('single', ['LoadSingleMovie'])
-  },
   computed: {
-    ...mapState('single', ['movie'])
+    player () {
+      console.log(this.$refs.plyr.player)
+      return this.$refs.plyr.player
+    }
+  },
+  mounted () {
+    if (Hls.isSupported()) {
+      const hls = new Hls()
+      hls.loadSource('https://devimages.apple.com.edgekey.net/iphone/samples/bipbop/bipbopall.m3u8')
+      hls.attachMedia(this.player.media)
+
+      window.hls = hls
+    }
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.plyr__video-embed{
-  max-height: 100vh !important;
-}
-</style>
