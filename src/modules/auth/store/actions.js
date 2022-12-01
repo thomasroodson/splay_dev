@@ -47,6 +47,10 @@ export const ActionSetUser = ({ commit }, payload) => {
   commit(types.SET_USER, payload)
 }
 
+export const ActionUpdateProfile = ({ dispatch }, payload) => {
+  console.log(payload)
+}
+
 export const ActionSetToken = ({ commit }, payload) => {
   storage.setLocalToken(payload)
   storage.setHeaderToken(payload)
