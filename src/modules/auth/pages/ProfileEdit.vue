@@ -6,10 +6,67 @@
           <h1>Editar Perfil</h1>
         </div>
         <div class="col-md-8 py-4">
-          <form>
+
+          <form @submit.prevent="ActionUpdateProfile(user)">
             <div class="form-group">
               <label>Nome Completo</label>
-              <input type="text" class="form-control" placeholder="Thalles Daniel" v-model="name">
+              <input
+                type="text"
+                class="form-control"
+                v-model="user.nome"
+              >
+            </div>
+            <div class="d-flex flex-wrap">
+              <div class="form-group pe-2 col-md-6">
+                <label>Email</label>
+                <input type="email" class="form-control" v-model="user.email">
+              </div>
+              <div class="form-group col-md-6">
+                <label>CPF</label>
+                <input type="text" class="form-control" v-model="user.cpf" v-mask="'###.###.###-##'">
+              </div>
+            </div>
+            <div class="d-flex flex-wrap">
+              <div class="form-group col-md-6 pe-2">
+                <label>Data de Nascimento</label>
+                <input type="text" class="form-control" v-mask="'##/##/####'">
+              </div>
+              <div class="form-group col-md-6">
+                <label>Celular</label>
+                <input type="text" class="form-control" placeholder="(00) 0000-0000" v-mask="'(##) #####-####'">
+              </div>
+            </div>
+            <div class="d-flex flex-wrap">
+              <div class="form-group col-md-5 pe-2">
+                <label>Endereço</label>
+                <input type="text" class="form-control" placeholder="Avenida Alameda das Travessas">
+              </div>
+              <div class="form-group col-md-2 pe-2">
+                <label>Número</label>
+                <input type="text" class="form-control" placeholder="102">
+              </div>
+              <div class="form-group col-md-5">
+                <label>Complemento</label>
+                <input type="text" class="form-control" placeholder="Apartamento, Casa">
+              </div>
+            </div>
+            <div class="d-flex flex-wrap">
+              <div class="form-group col-md-4 pe-2">
+                <label>CEP</label>
+                <input type="text" class="form-control" placeholder="Avenida Alameda das Travessas" v-mask="'##.###-###'">
+              </div>
+              <div class="form-group col-md-4 pe-2">
+                <label>Estado</label>
+                <input type="text" class="form-control" placeholder="102">
+              </div>
+              <div class="form-group col-md-4">
+                <label>Cidade</label>
+                <input type="text" class="form-control" placeholder="Apartamento, Casa">
+              </div>
+              <div class="form-group col-md-12">
+                <label>País</label>
+                <input type="text" class="form-control" placeholder="País">
+              </div>
             </div>
           </form>
         </div>
@@ -19,23 +76,27 @@
 </template>
 
 <script>
-import { required, minLength, between } from 'vuelidate/lib/validators'
+import { mapState, mapActions } from 'vuex'
+import { required, minLength } from 'vuelidate/lib/validators'
+import { mask } from 'vue-the-mask'
 
 export default {
   name: 'ProfileEdit',
-  data () {
-    return {
-      name: '',
-      age: 0
-    }
+  computed: {
+    ...mapState('auth', ['user'])
+  },
+  methods: {
+    ...mapActions('auth', ['ActionUpdateProfile'])
+  },
+  directives: {
+    mask
   },
   validations: {
-    name: {
-      required,
-      minLength: minLength(4)
-    },
-    age: {
-      between: between(20, 30)
+    user: {
+      nome: {
+        required,
+        minLength: minLength(4)
+      }
     }
   }
 }
