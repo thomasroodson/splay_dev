@@ -1,9 +1,21 @@
 <template>
-      <vue-plyr>
-      <div class="plyr__video-embed">
-        <iframe :src="`https://www.youtube.com/embed/QR1ludgWu9o?amp;iv_load_policy=3&amp;modestbranding=0&amp;playsinline=0&amp;showinfo=0&amp;rel=0&amp;enablejsapi=0`" allowfullscreen allowtransparency allow="autoplay"></iframe>
-      </div>
-    </vue-plyr>
+  <div>
+    <video
+      id="vid1"
+      width="500"
+      height="300"
+      class="video-js"
+      preload="auto"
+      poster="//vjs.zencdn.net/v/oceans.png"
+      controls
+      data-setup="{}"
+    >
+      <source
+        src="http://content.jwplatform.com/manifests/vM7nH0Kl.m3u8"
+        type="application/x-mpegURL"
+      />
+    </video>
+  </div>
 </template>
 
 <script>

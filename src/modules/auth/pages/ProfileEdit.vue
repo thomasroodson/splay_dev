@@ -29,8 +29,7 @@
             <div class="d-flex flex-wrap">
               <div class="form-group col-md-6 pe-2">
                 <label>Data de Nascimento</label>
-                <input type="text" :value="user.nascimento.split('-').reverse()" @change="user.nascimento" class="form-control" v-mask="'##/##/####'">
-                <label>{{ user.nascimento }}</label>
+                <input type="text" :value="user.nascimento.split('-').reverse()" class="form-control" v-mask="'##/##/####'">
               </div>
               <div class="form-group col-md-6">
                 <label>Celular</label>
