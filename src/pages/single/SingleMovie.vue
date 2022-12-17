@@ -47,10 +47,12 @@ export default {
   },
   async created () {
     await this.LoadSingleMovie(this.id)
+    await this.LoadRelatedContent(this.movie.id)
     this.loading = false
   },
   methods: {
-    ...mapActions('single', ['LoadSingleMovie'])
+    ...mapActions('single', ['LoadSingleMovie']),
+    ...mapActions('single', ['LoadRelatedContent'])
   },
   computed: {
     ...mapState('single', ['movie'])

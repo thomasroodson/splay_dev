@@ -14,8 +14,14 @@
     "@fortawesome/vue-fontawesome": "^2.0.8",
     "bootstrap": "^5.1.3",
     "core-js": "^3.8.3",
+<<<<<<< HEAD
     "hls.js": "^1.2.9",
+=======
+>>>>>>> d9e1284eb0088a476dc5065a46d2f585d9f08aac
     "plyr": "^3.7.2",
+    "videojs-contrib-hls": "^5.14.1",
+    "videojs-contrib-hls.js": "3.2.0",
+    "videojs-flash": "2.1.0",
     "vue": "^2.6.14",
     "vue-carousel": "^0.18.0",
     "vue-plyr": "^7.0.0",

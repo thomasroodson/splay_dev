@@ -2,10 +2,10 @@
   <section id="profile-edit">
     <div class="container mt-5 py-5">
       <div class="row justify-content-center">
-        <div class="col-md-8 title-profile">
+        <div class="col-lg-8 title-profile">
           <h1>Editar Perfil</h1>
         </div>
-        <div class="col-md-8 py-4">
+        <div class="col-lg-8 no-border py-4">
 
           <form @submit.prevent="ActionUpdateProfile(user)">
             <div class="form-group">
@@ -29,11 +29,11 @@
             <div class="d-flex flex-wrap">
               <div class="form-group col-md-6 pe-2">
                 <label>Data de Nascimento</label>
-                <input type="text" class="form-control" v-mask="'##/##/####'">
+                <input type="text" :value="user.nascimento.split('-').reverse()" class="form-control" v-mask="'##/##/####'">
               </div>
               <div class="form-group col-md-6">
                 <label>Celular</label>
-                <input type="text" class="form-control" placeholder="(00) 0000-0000" v-mask="'(##) #####-####'">
+                <input type="text" class="form-control" v-model="user.celular" v-mask="'(##) #####-####'">
               </div>
             </div>
             <div class="d-flex flex-wrap">
@@ -69,6 +69,14 @@
               </div>
             </div>
           </form>
+          <div class="d-flex mt-3">
+            <div class="flex-grow-1 pe-2">
+              <button type="submit" class="btn btn-dark w-100">Atualizar</button>
+            </div>
+            <div>
+              <button type="button" class="btn btn-secondary px-4">Pagamento</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -104,8 +112,33 @@ export default {
 
 <style lang="scss" scoped>
 #profile-edit{
-  .col-md-8{
+  .col-lg-8{
     border-bottom: 1px solid #ccc;
+    .form-control{
+      font-weight: 300;
+      background-color: #111 !important;
+      border-radius: 10px;
+      font-size: 1.063rem;
+      color:#fff;
+    }
+    .form-control:focus{
+      border-color:#FF0000;
+      box-shadow: none;
+    }
+  }
+  .btn{
+    font-size: 1.088rem;
+    border-radius: 12px;
+  }
+  .btn-dark{
+    background-color:#FF0000 !important;
+    border-color: #FF0000;
+  }
+  .btn-dark:hover{
+    opacity: 0.8;
+  }
+  .no-border{
+    border: 0 !important;
   }
   .title-profile h1{
     font-weight: 900;

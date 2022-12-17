@@ -11,12 +11,12 @@ export default [
   },
   {
     name: 'profile',
-    path: '/:userid/profile',
+    path: '/profile',
     component: () => import(/* webpackChunkName: "profile" */ './pages/Profile')
   },
   {
     name: 'profile-edit',
-    path: '/:userid/profile/edit',
+    path: '/profile/edit',
     component: () => import(/* webpackChunkName: "profile" */ './pages/ProfileEdit')
   },
   {

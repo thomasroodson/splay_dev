@@ -39,9 +39,9 @@
           {{ (user ? user.nome.split(' ')[0] : 'Usuário') }}
         </a>
         <div class="dropdown-menu position-absolute" @click="toggleDropdown" :class="{'d-block' : dropdown}">
-          <router-link class="dropdown-item" :to="`/${user.id}/profile`">Minha Conta</router-link>
+          <router-link class="dropdown-item" :to="{ name : 'profile' }">Minha Conta</router-link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" @click="this.ActionSignOut()">Sair</a>
+          <a class="dropdown-item" @click="ActionSignOut()">Sair</a>
         </div>
       </li>
       </ul>

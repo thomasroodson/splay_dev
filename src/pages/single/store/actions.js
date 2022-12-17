@@ -14,7 +14,6 @@ export const ActionSetSingleMovie = ({ commit }, payload) => {
 export const LoadRelatedContent = ({ dispatch }, payload) => {
   return services.single.relatedContent({ id: payload })
     .then(res => {
-      console.log(res)
       dispatch('SetRelatedContent', res.data.data)
     })
 }
