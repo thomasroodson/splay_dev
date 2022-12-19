@@ -1,7 +1,4 @@
 <template>
-<<<<<<< HEAD
-  <div></div>
-=======
   <div>
     <video
       id="vid1"
@@ -19,7 +16,6 @@
       />
     </video>
   </div>
->>>>>>> d9e1284eb0088a476dc5065a46d2f585d9f08aac
 </template>
 
 <script>
