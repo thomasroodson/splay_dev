@@ -22,11 +22,11 @@
         <div class="card-body d-flex pt-0">
           <p class="d-flex flex-grow-1 flex-column">
             <small>Nome</small>
-            <span>{{ nameCard ? nameCard : 'Joana Carvalho Pires' }}</span>
+            <span>{{ nameCard ? nameCard.toUpperCase() : 'Joana Carvalho Pires'.toUpperCase() }}</span>
           </p>
           <p class="d-flex flex-column px-3">
             <small>expira</small>
-            <span>20/26</span>
+            <span>{{ monthCard ? monthCard : '00' }}/{{ yearCard ? yearCard : '00' }}</span>
           </p>
         </div>
       </div>
@@ -35,17 +35,20 @@
       <form class="card-body d-flex flex-column">
         <div class="form-group">
           <label>Número do cartão</label>
-          <input type="text" class="form-control bg-transparent" v-model="numberCard" placeholder="0000 0000 0000 0000" v-mask="'#### #### #### ####'">
+          <input type="text" class="form-control bg-transparent" v-model="numberCard" autocomplete="off" placeholder="0000 0000 0000 0000" v-mask="'#### #### #### ####'">
         </div>
         <div class="form-group">
           <label>Nome impresso no cartão</label>
-          <input type="text" class="form-control bg-transparent" placeholder="Joana Carvalho Pires">
+          <input type="text" class="form-control bg-transparent" v-model="nameCard" autocomplete="off" placeholder="Joana Carvalho Pires">
         </div>
         <div class="form-group d-flex justify-content-between">
           <div class="col-sm-9 row">
             <label>Data de validade</label>
-            <div class="col">
-              <input type="text" class="form-control bg-transparent" placeholder="0000 0000 0000 0000">
+            <div class="col input-group">
+              <select class="custom-select bg-transparent" @change="handleChange">
+                <option value="">Mês</option>
+                <option :value="index + 1" v-for="(month, index) in monthDate" :key="index">{{ month }}</option>
+              </select>
             </div>
             <div class="col">
               <input type="text" class="form-control bg-transparent" placeholder="0000 0000 0000 0000">
@@ -53,7 +56,7 @@
           </div>
           <div class="col-sm-3">
             <label>cvc</label>
-            <input type="text" class="form-control bg-transparent" placeholder="000" mask="'###'">
+            <input type="text" class="form-control bg-transparent" v-model="cvvCard" placeholder="000" mask="'###'">
           </div>
         </div>
         <div class="d-flex justify-content-between">
@@ -75,11 +78,21 @@ export default {
       nameCard: '',
       monthCard: '',
       yearCard: '',
-      cvvCard: ''
+      cvvCard: '',
+      monthDate: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
     }
   },
   directives: {
     mask
+  },
+  methods: {
+    handleChange (e) {
+      if (e.target.value < 10) {
+        this.monthCard = `0${e.target.value}`
+      } else {
+        this.monthCard = e.target.value
+      }
+    }
   }
 }
 </script>
@@ -118,6 +131,13 @@ export default {
       input {
         color: #fff
       }
+    }
+    .custom-select {
+      width: 100%;
+      min-width: 280px;
+      cursor: pointer;
+      border: 1px solid #ced4da;
+      border-radius: 0.25rem;
     }
   }
 </style>
