@@ -7,7 +7,7 @@
       <div class="card-pay pt-3">
         <div class="card-body py-0 mt-4 pt-1 d-flex">
           <div class="flex-grow-1">
-            <img src="https://registro.br/assets/img/pagamento/bandeiras/visa.png" class="img-fluid">
+            <img v-bind:src="'https://raw.githubusercontent.com/muhammederdem/credit-card-form/master/src/assets/images/' + getCardType + '.png'" v-if="getCardType" v-bind:key="getCardType" class="img-fluid">
           </div>
             <p class="d-flex flex-column px-3">
               <small>cvc</small>
@@ -45,13 +45,16 @@
           <div class="col-sm-9 row">
             <label>Data de validade</label>
             <div class="col input-group">
-              <select class="custom-select bg-transparent" @change="handleChange">
+              <select class="custom-select bg-transparent" @change="handleChangeMonth">
                 <option value="">Mês</option>
                 <option :value="index + 1" v-for="(month, index) in monthDate" :key="index">{{ month }}</option>
               </select>
             </div>
-            <div class="col">
-              <input type="text" class="form-control bg-transparent" placeholder="0000 0000 0000 0000">
+            <div class="col input-group">
+              <select class="custom-select bg-transparent" @change="handleChangeYear">
+                <option value="">Ano</option>
+                <option :value="yearDate + index" v-for="(n, index) in 12" :key="n">{{ yearDate + index }}</option>
+              </select>
             </div>
           </div>
           <div class="col-sm-3">
@@ -61,7 +64,7 @@
         </div>
         <div class="d-flex justify-content-between">
           <h5>Valor total - R$ 29,90</h5>
-          <button class="btn btn-danger">Pagar</button>
+          <button class="btn btn-danger w-50">Pagar</button>
         </div>
       </form>
     </div>
@@ -79,19 +82,39 @@ export default {
       monthCard: '',
       yearCard: '',
       cvvCard: '',
-      monthDate: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
+      monthDate: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+      yearDate: new Date().getFullYear()
     }
   },
   directives: {
     mask
   },
+  computed: {
+    getCardType () {
+      /* eslint-disable */
+      const number = this.numberCard
+      let re = new RegExp('^4[0-9]{15}$')
+      if (number.match(re) != null) return 'visa'
+
+      re = new RegExp('^((5(([1-2]|[4-5])[0-9]{8}|0((1|6)([0-9]{7}))|3(0(4((0|[2-9])[0-9]{5})|([0-3]|[5-9])[0-9]{6})|[1-9][0-9]{7})))|((508116)\\d{4,10})|((502121)\\d{4,10})|((589916)\\d{4,10})|(2[0-9]{15})|(67[0-9]{14})|(506387)\\d{4,10})')
+      if (number.match(re) != null) return 'mastercard'
+
+      re = new RegExp('/^4011(78|79)|^43(1274|8935)|^45(1416|7393|763(1|2))|^50(4175|6699|67[0-6][0-9]|677[0-8]|9[0-8][0-9]{2}|99[0-8][0-9]|999[0-9])|^627780|^63(6297|6368|6369)|^65(0(0(3([1-3]|[5-9])|4([0-9])|5[0-1])|4(0[5-9]|[1-3][0-9]|8[5-9]|9[0-9])|5([0-2][0-9]|3[0-8]|4[1-9]|[5-8][0-9]|9[0-8])|7(0[0-9]|1[0-8]|2[0-7])|9(0[1-9]|[1-6][0-9]|7[0-8]))|16(5[2-9]|[6-7][0-9])|50(0[0-9]|1[0-9]|2[1-9]|[3-4][0-9]|5[0-8]))/')
+      if (number.match(re) != null) return 'elo'
+      
+      return 'visa' // default type
+    }
+  },
   methods: {
-    handleChange (e) {
+    handleChangeMonth (e) {
       if (e.target.value < 10) {
         this.monthCard = `0${e.target.value}`
       } else {
         this.monthCard = e.target.value
       }
+    },
+    handleChangeYear (e) {
+      this.yearCard = e.target.value.slice(2, 4)
     }
   }
 }
@@ -120,6 +143,9 @@ export default {
     .number-card {
       font-size: 1.7rem;
     }
+    .img-fluid {
+      height: 45px;
+    }
   }
   .card {
     background: #414141;
@@ -138,6 +164,16 @@ export default {
       cursor: pointer;
       border: 1px solid #ced4da;
       border-radius: 0.25rem;
+      padding: 0.375rem 0.75rem;
+    }
+    .btn{
+      background-color:#FF0000 !important;
+      border-color: #FF0000;
+      font-size: 1.088rem;
+      border-radius: 12px;
+    }
+    .btn:hover{
+      opacity: 0.8;
     }
   }
 </style>
