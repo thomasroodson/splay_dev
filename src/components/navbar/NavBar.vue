@@ -41,7 +41,7 @@
         <div class="dropdown-menu position-absolute" @click="toggleDropdown" :class="{'d-block' : dropdown}">
           <router-link class="dropdown-item" :to="{ name : 'profile' }">Minha Conta</router-link>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" @click="ActionSignOut()">Sair</a>
+          <a class="dropdown-item signout" @click="signOut">Sair</a>
         </div>
       </li>
       </ul>
@@ -74,7 +74,15 @@ export default {
     toggleDropdown () {
       this.dropdown = !this.dropdown
     },
-    ...mapActions('auth', ['ActionSignOut'])
+    ...mapActions('auth', ['ActionSignOut']),
+    async signOut () {
+      try {
+        await this.ActionSignOut()
+        this.$router.push('/')
+      } catch {
+        alert('Tente novamente!')
+      }
+    }
   },
   mounted () {
     window.addEventListener('scroll', this.updateScroll)
@@ -144,6 +152,9 @@ export default {
         background: transparent;
         color:#ff0000;
       }
+    }
+    .signout {
+      cursor: pointer;
     }
   }
   @media (max-width: 768px){
